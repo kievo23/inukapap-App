@@ -1,0 +1,24 @@
+<ion-view view-title="Login">
+  <ion-content class="padding">
+  <div class="card">
+    <div class="item item-text-wrap text-center">
+      <ion-list>
+        <div class="list"> 
+          <img ng-src="img/inuka-pap-logo-300x113.png"> 
+        </div>       
+        <div class="list">            
+          <label class="item item-input item-floating-label">
+            <span class="input-label">Phone</span>
+            <input type="text" ng-model="user.phone" placeholder="0700000000">
+          </label>
+          <label class="item item-input item-floating-label">
+            <button class="button button-balanced" ng-click="signin(user)">
+              Login
+            </button>
+          </label>            
+        </div>
+      </ion-list>
+    </div>
+  </div>    
+  </ion-content>
+</ion-view>
