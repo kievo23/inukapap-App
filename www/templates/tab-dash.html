@@ -1,21 +1,57 @@
 <ion-view view-title="Dashboard">
+    <ion-nav-view name="tab-insurance"></ion-nav-view>
   <ion-content class="padding">
-  <div class="card">
-    <div class="item item-text-wrap text-center">
-      <h2> {{ phone }} Welcome to InukaPap </h2>
-    </div>
-    <div class="item item-text-wrap">
+  <div class="card">    
+    <div class="item item-text-wrap  text-center">
+    <h2 class="site-color"> {{ first_name }} {{ last_name }} ({{phone}})</h2>
+      <h4>Welcome to InukaPap </h4><hr>
       <img ng-src="img/inuka-pap-logo-300x113.png">
+      
       <p class="text-center">
-      iNuka Pap provides instant emergency Financial Services to MFI and SACCO members through the iNuka Pap proprietary platform.<hr>
-      <a  class="text-center" href="http://inukapap.co.ke/" target="_blank">iNukaPap</a>.
+      iNukaPap provides instant emergency Financial Services     
       </p>
     </div>
-    <div class="item item-text-wrap">
-      <i class="icon ion-card"></i>
-      You can save or take loans with iNukaPap platform
+    <div class="item item-text-wrap text-center">      
+      <i class="icon ion-clipboard"></i> Our Insurance
+      <div class="card">
+      <div class="item item-divider text-center row site-color">
+          Saving Gives You Access To Medical Cover
+      </div>
+      <div class="item item-text-wrap text-center row">
+        <div class="col input-label">
+          Save Upto KSH 20,000
+        </div>
+        <div class="col">
+          <p>
+            Inpatient Insurance: 200,000<br>
+            Outpatient Loan of upto: 20,000
+          </p>          
+        </div>
+      </div>      
+      <div class="item item-text-wrap text-center row">
+        <div class="col kidogo">
+          You can save more through Pay Bill Number 263520, account no is your phone number {{phone}}.<br> 
+        </div>
+      </div>
     </div>
+    <div class="item item-text-wrap text-center row">
+            <div class="col kidogo">
+              Contact us on <br>
+              <a class="button button-energized button-small footer" href="#" onclick="window.open('mailto:info@inukapap.co.ke', '_system')">
+                <ion-icon class="ion-ios-email"></ion-icon>
+              </a>
+              <a class="button button-energized button-small footer"  href="#" onclick="window.open('https://www.facebook.com/inukapap', '_system')">
+                <ion-icon class="ion-social-facebook"></ion-icon>
+              </a>
+              <a class="button button-energized button-small footer" href="tel:+254701949994">                
+                <ion-icon class="ion-android-call"></ion-icon>
+              </a>
+            </div>
+      </div>
+    </div>    
   </div>
     
   </ion-content>
 </ion-view>
+
+

@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic','starter.controllers','starter.services','ngCordova','ionic-datepicker'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -23,12 +23,33 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider,ionicDatePickerProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
+
+
+  var datePickerObj = {
+      inputDate: new Date(),
+      setLabel: 'Set',
+      todayLabel: 'Today',
+      closeLabel: 'Close',
+      mondayFirst: false,
+      weeksList: ["S", "M", "T", "W", "T", "F", "S"],
+      monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
+      templateType: 'popup',
+      from: new Date(1940, 08, 01),
+      to: new Date(),
+      showTodayButton: true,
+      dateFormat: 'dd MM yyyy',
+      closeOnSelect: false,
+      disableWeekdays: [7]
+    };
+    ionicDatePickerProvider.configDatePicker(datePickerObj);
+
+
   $stateProvider
 
   // setup an abstract state for the tabs directive
@@ -56,25 +77,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     controller: 'Login'
   })
 
+  .state('register', {
+    url: '/register',
+    templateUrl: 'templates/tab-register.html',
+    controller: 'RegisterCtrl'
+  })
+
   .state('tab.savings', {
       url: '/savings',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
+        'tab-savings': {
+          templateUrl: 'templates/tab-savings.html',
+          controller: 'SavingsCtrl'
         }
       }
     })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })
-
   .state('tab.account', {
     url: '/account',
     views: {
@@ -90,7 +107,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-loans': {
         templateUrl: 'templates/tab-loans.html',
-        controller: 'LoanDetails'
+        controller: 'LoanCtrl'
       }
     }
   });

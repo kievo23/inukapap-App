@@ -1,0 +1,71 @@
+<ion-view view-title="Register">
+  <ion-content class="padding">
+  <div class="card">
+    <div class="item item-text-wrap text-center">
+      <ion-list>
+        <div class="list"> 
+          <img ng-src="img/inuka-pap-logo-300x113.png"> 
+        </div>       
+        <div class="list">
+          <label class="item item-input">
+            <span class="input-label">First Name</span>
+            <input type="text" ng-model="user.first_name" placeholder="First Name">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Last Name</span>
+            <input type="text" ng-model="user.last_name" placeholder="Last Name">
+          </label>           
+          <label class="item item-input">
+            <span class="input-label">Phone</span>
+            <input type="text" ng-model="user.phone" placeholder="0700000000">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Create Pin</span>
+            <input type="password" ng-model="user.pin" placeholder="****">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Confirm Pin</span>
+            <input type="password" ng-model="user.confirmpin" placeholder="****">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">ID Number</span>
+            <input type="text" ng-model="user.idno" placeholder="ID No">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Date of Birth</span>
+            <ionic-datepicker date="currentDate" min="minDate" max="maxDate"
+             callback="datePickerCallback()" ng-model="user.dob">
+                <button
+                class="button button-block button-balanced" ng-click="openDatePicker()">
+                {{ currentDate | date:'yyyy-MM-dd' }}</button>
+            </ionic-datepicker>
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Location</span>
+            <input type="text" ng-model="user.location" placeholder="Nairobi">
+          </label>
+          <label class="item item-input item-select">
+            <div class="input-label">Work</div>
+            <select ng-model="user.employed">
+              <option>Employed</option>
+              <option>Business</option>
+            </select>
+          </label>
+          <label class="item item-input">
+            <button class="button button-full button-balanced" ng-click="register(user)">
+              Register
+            </button>
+          </label>            
+        </div>
+      </ion-list>
+    </div>
+    <div class="item item-text-wrap text-center">      
+      <ul class="list">
+          <li class="item">
+            <a href="#/login"><i class="icon ion-ios-person"></i> Login</a>
+          </li>
+      </ul>
+    </div>
+  </div>    
+  </ion-content>
+</ion-view>

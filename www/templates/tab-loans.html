@@ -1,28 +1,87 @@
 <ion-view view-title="Loans">
   <ion-content class="padding">
   	<div class="card">
-	    <div class="item item-text-wrap text-center row">
+  		<div class="item item-divider site-color text-center">
+		    Loan Status
+		  </div>
+		<div class="item item-text-wrap text-center row">    	    
+	    	<div class="col">
+	    		<ion-list>
+			    	<div class="list">					  
+					  <label class="item item-input">
+					    <span class="input-label kidogo">Enter Pin</span>
+					  </label>
+					  </div>
+			    </ion-list>
+			</div>
+			<div class="col">
+	    		<ion-list>
+			    	<div class="list">
+					  <label class="item item-input item-floating-label">
+					    <input type="password" ng-model="user.pin" placeholder="***">
+					  </label>
+					    </div>
+			    </ion-list>
+			</div>
+			<div class="col">
+	    		<ion-list>
+			    	<div class="list">
+					  <label class="item item-input">
+					  	<button class="button button-energized" ng-click="auth(user)">
+						  Check
+						</button>
+					</label>					  
+					</div>
+			    </ion-list>
+	    	</div>	    		
+	    </div>
+	    <div class="item item-text-wrap text-center row">	    	
 	    	<div class="col">
 	    		<ion-list>
 	    			<ion-item>
-			    		Current Loan
+			    		Current Loan:<br>
+			    		<span class="loan-color">{{ balance }}</span>
 			    	</ion-item>
 			    	<ion-item>
-			    		<font style="color:#ff5600;font-size:20px;font-weight:bold">4000.00</font><br>
-			    		<font style="color:#ff5600;font-size:20px;font-weight:bold">KSH</font>
+			    		Loan Limit:<br>
+			    		<span class="site-color">{{ loan_limit }}</span>
 			    	</ion-item>
-			    </ion-list>
-	    	</div>    
+			    	<ion-item>
+			    	</ion-item>
+			    </ion-list>	    		
+	    	</div>	    		
+	    </div>
+	    
+	    <div class="item item-divider site-color text-center">
+		    Request Loan
+		</div>
+		<div class="item item-text-wrap text-center row">    	    
 	    	<div class="col">
 	    		<ion-list>
 			    	<div class="list">					  
 					  <label class="item item-input item-floating-label">
-					    <span class="input-label">Password</span>
-					    <input type="password" placeholder="****">
+					    <span class="input-label">Amount</span>
+					    <input type="text" ng-model="loan.amount" placeholder="2000">
 					  </label>
+					  </div>
+			    </ion-list>
+			</div>
+			<div class="col">
+	    		<ion-list>
+			    	<div class="list">
 					  <label class="item item-input item-floating-label">
-					  	<button class="button button-energized">
-						  GO
+					    <span class="input-label kidogo">Enter Pin</span>
+					    <input type="password" ng-model="loan.pin" placeholder="****">
+					  </label>
+					    </div>
+			    </ion-list>
+			</div>
+			<div class="col">
+	    		<ion-list>
+			    	<div class="list">
+					  <label class="item item-input item-floating-label">
+					  	<button class="button button-energized" ng-click="loanRequest(loan)">
+						  Request
 						</button>
 					</label>					  
 					</div>
@@ -30,9 +89,23 @@
 	    	</div>	    		
 	    </div>
 	    <div class="item item-text-wrap text-center row">
-        <div class="col">
-          You can pay your loan through Safaricom's Pay Bill Number 263520
-        </div>
+        	<div class="col kidogo">
+          		You can pay your loan through Pay Bill Number 263520, account no is your phone number {{phone}}. <br> 
+        	</div>
+      	</div>
+      	<div class="item item-text-wrap text-center row">
+            <div class="col kidogo">
+              Contact us on <br>
+              <a class="button button-energized button-small footer" href="#" onclick="window.open('mailto:info@inukapap.co.ke', '_system')">
+                <ion-icon class="ion-ios-email"></ion-icon>
+              </a>
+              <a class="button button-energized button-small footer"  href="#" onclick="window.open('https://www.facebook.com/inukapap', '_system')">
+                <ion-icon class="ion-social-facebook"></ion-icon>
+              </a>
+              <a class="button button-energized button-small footer" href="tel:+254701949994">                
+                <ion-icon class="ion-android-call"></ion-icon>
+              </a>
+            </div>
       </div>
     </div>    
   </ion-content>

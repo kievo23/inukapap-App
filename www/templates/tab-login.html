@@ -5,14 +5,33 @@
       <ion-list>
         <div class="list"> 
           <img ng-src="img/inuka-pap-logo-300x113.png"> 
-        </div>       
-        <div class="list">            
+        </div>  
+        <div class="list"> 
+        <a class="button button-balanced" href="#/register"><i class="icon ion-ios-person"></i> Register</a>  
+        </div>   
+        <div class="list">           
           <label class="item item-input item-floating-label">
             <span class="input-label">Phone</span>
             <input type="text" ng-model="user.phone" placeholder="0700000000">
           </label>
           <label class="item item-input item-floating-label">
-            <button class="button button-balanced" ng-click="signin(user)">
+            <span class="input-label">ID Number</span>
+            <input type="number" ng-model="user.idno" placeholder="ID No">
+          </label>
+          <div class="item item-divider">
+              <button class="button button-balanced button-small button-full" ng-click="confirmation(user)">
+                Get Confirmation Code
+              </button>
+          </div>
+          <div class="item item-input-inset">
+              <label class="item-input-wrapper item-floating-label">
+                <span class="input-label">Code</span>            
+                <input type="number" ng-model="user.code" placeholder="Confirmation Code">
+              </label> 
+          </div>
+                   
+          <label class="item item-input item-floating-label">
+            <button class="button button-balanced  button-small" ng-click="signin(user)">
               Login
             </button>
           </label>            

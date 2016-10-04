@@ -1,7 +1,33 @@
 /* Empty. Add your own CSS if you like */
 .bar-header{
-	background: rgb(218, 163, 2) !important;
+	background: rgb(218, 132, 2) !important;
 }
 .title{
 	color: whitesmoke !important;
+}
+.site-color{
+	color:#1abb00;
+	font-size:16px;
+	font-weight: bolder !important;
+}
+.loan-color{
+	color:#ff5600;
+	font-size:18px;
+	font-weight: bolder !important;
+}
+#loading{
+	display: none;
+}
+a{
+	text-decoration: none;
+	color:#444;
+}
+.kidogo{
+	font-size:12px;
+}
+.item-divider{
+	padding: 5px;
+}
+.footer{
+	font-size: 22px;
 }

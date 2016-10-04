@@ -1,10 +1,45 @@
 <ion-view view-title="Account">
   <ion-content  class="padding">
-    <ion-list>
-    <label class="item item-input">
-    	<span class="input-label">Signout</span>
-    	<button class="button icon ion-log-out text-right" ng-click="signout()">
-        </button>
+  	<ion-list>
+    	<div class="card">
+    		<div class="item item-text-wrap text-center row">
+		    	<label class="item item-input site-color">
+		    	<div class="col">Reset Pin </div>  	
+		        </label>
+        	</div>
+    		<label class="item item-input">
+	            <span class="input-label">ID Number</span>
+	            <input type="text" ng-model="resetuser.idno" placeholder="ID No">
+	        </label>
+	    	<label class="item item-input">
+	    		<span class="input-label">Reset Pin</span>
+	    		<button class="button button-small button-balanced" ng-click="resetPin(resetuser)">Reset
+	        	</button>
+	        </label>
+	    </div>
     </ion-list>
+    <ion-list>
+    	<div class="card">
+	    	<label class="item item-input">
+	    	<span class="input-label">Signout</span>
+	    	<button class="button icon ion-log-out text-right" ng-click="signout()">
+	        </button>
+	        </label>
+	    </div>
+    </ion-list>   
+    <div class="item item-text-wrap text-center row">
+            <div class="col kidogo">
+              Contact us on <br>
+              <a class="button button-energized button-small footer" href="#" onclick="window.open('mailto:info@inukapap.co.ke', '_system')">
+                <ion-icon class="ion-ios-email"></ion-icon>
+              </a>
+              <a class="button button-energized button-small footer"  href="#" onclick="window.open('https://www.facebook.com/inukapap', '_system')">
+                <ion-icon class="ion-social-facebook"></ion-icon>
+              </a>
+              <a class="button button-energized button-small footer" href="tel:+254701949994">                
+                <ion-icon class="ion-android-call"></ion-icon>
+              </a>
+            </div>
+      </div> 
   </ion-content>
 </ion-view>

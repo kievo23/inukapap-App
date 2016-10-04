@@ -1,0 +1,70 @@
+<ion-view view-title="Savings">
+  <ion-content>
+    <div class="card">
+      <div class="item item-text-wrap text-center row">
+        <div class="col">
+          <ion-list>
+            <ion-item>
+              Current Savings
+            </ion-item>
+          </ion-list>          
+          <ion-list>            
+            <label class="item item-input">
+              <span class="input-label">Enter Pin</span>
+              <input type="password" ng-model="user.pin" placeholder="****">
+            </label>
+            <label class="item item-input item-floating-label">
+              <button class="button button-energized" ng-model="pin" ng-click="auth(user)">
+                GO
+              </button>
+            </label>
+          </ion-list>
+          <ion-list>
+            <ion-item>
+              <span class="site-color">{{balance}}</span><br>
+              <span class="site-color">KSH</span>              
+            </ion-item>
+          </ion-list>
+          <ion-list>
+            <div class="card">
+              <label class="item item-input site-color">
+                <div class="col">Beneficiaries  </div>  
+                </label>
+              <label class="item item-input" ng-repeat="b in beneficiaries" ng-if="beneficiaries">
+                <span class="input-label"><img ng-src="http://app.inukapap.co.ke/uploads/insurance/{{ user_id }}/{{b.photo}}" width="100px"></span>
+                <span class="input-label"><p>{{b.names}}<br>{{b.relation}}<br>{{b.email}}<br>IDNO: {{b.idno}}</p></span>
+              </label>
+              <label class="item item-input" ng-if="nobeneficiaries">
+                <p>You can send information on your beneficiaries to info@inukapap.co.ke: names, id no, phone and date of birth, passport Photo and Birth certificate</p>
+              </label>
+            </div>
+          </ion-list>
+        </div>   
+      </div>
+      <div class="item item-divider text-center row">
+          Saving Gives You Access To Medical Cover
+      </div>
+        
+      <div class="item item-text-wrap text-center row">
+        <div class="col kidogo">
+          You can save more through Pay Bill Number 263520, account no is your phone number {{phone}}. <br> 
+        </div>
+        
+      </div>
+      <div class="item item-text-wrap text-center row">
+            <div class="col kidogo">
+              Contact us on <br>
+              <a class="button button-energized button-small footer" href="#" onclick="window.open('mailto:info@inukapap.co.ke', '_system')">
+                <ion-icon class="ion-ios-email"></ion-icon>
+              </a>
+              <a class="button button-energized button-small footer"  href="#" onclick="window.open('https://www.facebook.com/inukapap', '_system')">
+                <ion-icon class="ion-social-facebook"></ion-icon>
+              </a>
+              <a class="button button-energized button-small footer" href="tel:+254701949994">                
+                <ion-icon class="ion-android-call"></ion-icon>
+              </a>
+            </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
