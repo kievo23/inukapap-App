@@ -31,3 +31,16 @@ a{
 .footer{
 	font-size: 22px;
 }
+ion-tabs.tabs-striped.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-striped.tabs-color-active-positive .tab-item.active, ion-tabs.tabs-striped.tabs-color-active-positive .tab-item.activated {
+    border-color: #67f538 !important;
+    color: #ffffff !important;
+}
+.tabs-striped .tabs {
+    background-color: #da8402 !important;
+}
+.bar {
+	border-bottom: 0px solid #ddd;
+}
+.item{
+	font-size: 12px !important;
+}
