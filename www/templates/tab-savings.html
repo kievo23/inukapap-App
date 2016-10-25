@@ -26,6 +26,42 @@
             </ion-item>
           </ion-list>
           <ion-list>
+            <div class="item item-divider site-color text-center">
+                Withdraw Savings
+            </div>
+            <div class="item item-text-wrap text-center row">         
+                <div class="col">
+                  <ion-list>
+                    <div class="list">            
+                    <label class="item item-input">
+                      <input type="number" ng-model="savings.amount" placeholder="Amount">
+                    </label>
+                    </div>
+                  </ion-list>
+              </div>
+              <div class="col">
+                  <ion-list>
+                    <div class="list">
+                    <label class="item item-input">
+                      <input type="password" ng-model="savings.pin" placeholder="pin">
+                    </label>
+                      </div>
+                  </ion-list>
+              </div>
+              <div class="col">
+                  <ion-list>
+                    <div class="list">
+                    <label class="item item-input">
+                      <button class="button button-energized button-small" ng-click="savingsRequest(savings)">
+                      Withdraw
+                    </button>
+                  </label>            
+                  </div>
+                  </ion-list>
+                </div>          
+              </div>
+          </ion-list>
+          <ion-list>
             <div class="card">
               <label class="item item-input site-color">
                 <div class="col">Beneficiaries  </div>  

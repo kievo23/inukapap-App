@@ -14,6 +14,7 @@ angular.module('starter.controllers', [])
   $scope.hide = function(){$ionicLoading.hide();};
   $scope.phone = window.localStorage.getItem('phone');
   $scope.user = {};
+  $scope.savings = {};
 
   $scope.showAlert = function($message) {
     var alertPopup = $ionicPopup.alert({
@@ -62,6 +63,53 @@ angular.module('starter.controllers', [])
     $scope.user.pin = ""; 
   };
 
+  $scope.savingsRequest = function(savings){
+    
+    var phone = window.localStorage.getItem("phone");
+    var pin   = savings.pin;
+    if(savings.pin == null || savings.pin == ""){
+          $scope.showAlert("Kindly enter your pin");
+          return;
+    }else if(savings.amount == null || savings.amount == ""){
+          $scope.showAlert("Type Amount to Withdraw");
+          return;
+    }else{
+      $scope.show($ionicLoading);
+      $http({
+        method: 'POST',
+        url : 'http://localhost:8000/api/authPinApp',      
+        data: {'pin':savings.pin, 'phone':phone,'amount':savings.amount, 'savingsRequest':true },
+        headers : {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+      }).then(function(response){
+          $scope.hide($ionicLoading);
+          if(response.data.error){
+            $scope.showAlert(response.data.error);
+            console.log(response.data);
+          }else{
+            if(response.data.error){
+              //console.log(response);
+              $scope.showAlert(response.data.error);
+            }
+            var balance = parseInt(response.data.balance);
+            if(balance < 0){
+              $scope.balance = Math.abs(balance);
+            }else{
+              $scope.balance = 0;
+            }
+            $scope.loan_limit = response.data.loan_limit;
+            console.log(response.data);
+          }
+        },
+        function (response){
+          $scope.hide($ionicLoading);
+          $scope.showAlert("Network problem, Try Again");
+        }
+      );
+    }
+    $scope.savings.pin = ""; 
+    $scope.savings.amount = ""; 
+  };
+
   var phone = window.localStorage.getItem("phone");
   $http({
       method: 'POST',
@@ -90,6 +138,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('RegisterCtrl', function($scope,$ionicLoading,$http,$state,$ionicPopup,ionicDatePicker) {
+  
   $scope.show = function() {$ionicLoading.show({template: '<p>Loading...</p><ion-spinner></ion-spinner>'});};
   $scope.user = {};
   $scope.hide = function(){$ionicLoading.hide();};
