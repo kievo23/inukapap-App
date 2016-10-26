@@ -5,8 +5,12 @@ angular.module('starter.controllers', [])
     $scope.first_name = window.localStorage.getItem('first_name');
     $scope.last_name = window.localStorage.getItem('last_name');
     if($scope.phone == null){
-      $state.go('login');
+      $state.go('loginPage');
     }
+})
+
+.controller('LoginPage', function($scope,$state) {
+
 })
 
 .controller('SavingsCtrl', function($scope,$ionicLoading,$http,$state,$ionicPopup) {
@@ -77,7 +81,7 @@ angular.module('starter.controllers', [])
       $scope.show($ionicLoading);
       $http({
         method: 'POST',
-        url : 'http://localhost:8000/api/authPinApp',      
+        url : 'http://app.inukapap.co.ke/api/authPinApp',      
         data: {'pin':savings.pin, 'phone':phone,'amount':savings.amount, 'savingsRequest':true },
         headers : {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
       }).then(function(response){
@@ -107,7 +111,6 @@ angular.module('starter.controllers', [])
       );
     }
     $scope.savings.pin = ""; 
-    $scope.savings.amount = ""; 
   };
 
   var phone = window.localStorage.getItem("phone");

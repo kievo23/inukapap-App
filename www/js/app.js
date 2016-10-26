@@ -77,6 +77,12 @@ angular.module('starter', ['ionic','starter.controllers','starter.services','ngC
     controller: 'Login'
   })
 
+  .state('loginPage', {
+    url: '/loginPage',
+    templateUrl: 'templates/tab-loginPage.html',
+    controller: 'LoginPage'
+  })
+
   .state('register', {
     url: '/register',
     templateUrl: 'templates/tab-register.html',
