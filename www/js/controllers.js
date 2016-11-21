@@ -150,7 +150,7 @@ angular.module('starter.controllers', [])
 
   var ipObj1 = {
       callback: function (val) {  //Mandatory
-        console.log('Return value from the datepicker popup is : ' + val, new Date(val));
+        //console.log('Return value from the datepicker popup is : ' + val, new Date(val));
         $scope.currentDate = new Date(val);
       },
     };
@@ -169,7 +169,10 @@ angular.module('starter.controllers', [])
   };
 
   $scope.register = function(user){
-    var dob = $scope.currentDate.getFullYear()+"-"+$scope.currentDate.getMonth()+"-"+$scope.currentDate.getDate();
+    var currentMonth = ($scope.currentDate.getMonth() < 10 ? '0' : '') + $scope.currentDate.getMonth();
+    var currentDate = ($scope.currentDate.getDate() < 10 ? '0' : '') + $scope.currentDate.getDate();
+    var dob = $scope.currentDate.getFullYear()+"-"+currentMonth+"-"+currentDate;
+
     if(user.first_name == null || user.first_name == ""){
           $scope.showAlert("Kindly enter your first name");
           return;
