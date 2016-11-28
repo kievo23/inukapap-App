@@ -13,12 +13,100 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('SavingsCtrl', function($scope,$ionicLoading,$http,$state,$ionicPopup) {
+.controller('SavingsCtrl', function($scope,$ionicLoading,$http,$state,$ionicPopup,$timeout) {
   $scope.show = function() {$ionicLoading.show({template: '<p>Loading...</p><ion-spinner></ion-spinner>'});};
   $scope.hide = function(){$ionicLoading.hide();};
   $scope.phone = window.localStorage.getItem('phone');
   $scope.user = {};
   $scope.savings = {};
+
+  $scope.currentSavings = function() {
+    $scope.data = {};
+
+    // An elaborate, custom popup
+    var myPopup = $ionicPopup.show({
+      templateUrl: 'savings-modal.html',
+      title: 'Current Savings',
+      scope: $scope,
+      buttons: [
+        { text: 'Close' }
+      ]
+    });
+
+    myPopup.then(function(res) {
+      console.log('Tapped!', res);
+    });
+
+    $timeout(function() {
+       myPopup.close(); //close the popup after 3 seconds for some reason
+    }, 10000);
+  };
+
+  $scope.withdrawSavings = function() {
+    $scope.data = {};
+
+    // An elaborate, custom popup
+    var myPopup = $ionicPopup.show({
+      templateUrl: 'withdrawal-modal.html',
+      title: 'Withdraw Savings',
+      scope: $scope,
+      buttons: [
+        { text: 'Close' }
+      ]
+    });
+
+    myPopup.then(function(res) {
+      console.log('Tapped!', res);
+    });
+
+    $timeout(function() {
+       myPopup.close(); //close the popup after 3 seconds for some reason
+    }, 10000);
+  };
+
+  $scope.howToSave = function() {
+    $scope.data = {};
+
+    // An elaborate, custom popup
+    var myPopup = $ionicPopup.show({
+      templateUrl: 'how-to-save.html',
+      title: 'How To Save',
+      scope: $scope,
+      buttons: [
+        { text: 'Close' }
+      ]
+    });
+
+    myPopup.then(function(res) {
+      console.log('Tapped!', res);
+    });
+
+    $timeout(function() {
+       myPopup.close(); //close the popup after 3 seconds for some reason
+    }, 10000);
+  };
+
+  $scope.beneficiary = function() {
+    $scope.data = {};
+
+    // An elaborate, custom popup
+    var myPopup = $ionicPopup.show({
+      templateUrl: 'beneficiaries.html',
+      title: 'Beneficiaries',
+      scope: $scope,
+      buttons: [
+        { text: 'Close' }
+      ]
+    });
+
+    myPopup.then(function(res) {
+      console.log('Tapped!', res);
+    });
+
+    $timeout(function() {
+       myPopup.close(); //close the popup after 3 seconds for some reason
+    }, 10000);
+  };
 
   $scope.showAlert = function($message) {
     var alertPopup = $ionicPopup.alert({
@@ -231,7 +319,7 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('LoanCtrl', function($scope,$ionicLoading,$http,$state,$ionicPopup){
+.controller('LoanCtrl', function($scope,$ionicLoading,$http,$state,$ionicPopup,$timeout){
 
   //200 = status for loan request;
   $scope.show = function() {$ionicLoading.show({template: '<p>Loading...</p><ion-spinner></ion-spinner>'});};
@@ -239,6 +327,72 @@ angular.module('starter.controllers', [])
   $scope.phone = window.localStorage.getItem('phone');
   $scope.user = {};
   $scope.loan = {};
+
+  $scope.loanStatus = function() {
+    $scope.data = {};
+
+    // An elaborate, custom popup
+    var myPopup = $ionicPopup.show({
+      templateUrl: 'loanStatus.html',
+      title: 'Loan Status',
+      scope: $scope,
+      buttons: [
+        { text: 'Close' }
+      ]
+    });
+
+    myPopup.then(function(res) {
+      console.log('Tapped!', res);
+    });
+
+    $timeout(function() {
+       myPopup.close(); //close the popup after 3 seconds for some reason
+    }, 10000);
+  };
+
+  $scope.takeLoan = function() {
+    $scope.data = {};
+
+    // An elaborate, custom popup
+    var myPopup = $ionicPopup.show({
+      templateUrl: 'takeLoan.html',
+      title: 'Take Loan',
+      scope: $scope,
+      buttons: [
+        { text: 'Close' }
+      ]
+    });
+
+    myPopup.then(function(res) {
+      console.log('Tapped!', res);
+    });
+
+    $timeout(function() {
+       myPopup.close(); //close the popup after 3 seconds for some reason
+    }, 10000);
+  };
+
+  $scope.payLoan = function() {
+    $scope.data = {};
+
+    // An elaborate, custom popup
+    var myPopup = $ionicPopup.show({
+      templateUrl: 'payLoan.html',
+      title: 'How To Pay Your Loan',
+      scope: $scope,
+      buttons: [
+        { text: 'Close' }
+      ]
+    });
+
+    myPopup.then(function(res) {
+      console.log('Tapped!', res);
+    });
+
+    $timeout(function() {
+       myPopup.close(); //close the popup after 3 seconds for some reason
+    }, 10000);
+  };
 
   $scope.facebook = function(){
     window.open('https://www.facebook.com/inukapap', '_system')
@@ -292,8 +446,7 @@ angular.module('starter.controllers', [])
   };
 
 
-  $scope.loanRequest = function(loan){
-    
+  $scope.loanRequest = function(loan){    
     var phone = window.localStorage.getItem("phone");
     var pin   = loan.pin;
     if(loan.pin == null || loan.pin == ""){

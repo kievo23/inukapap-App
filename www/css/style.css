@@ -1,4 +1,11 @@
 /* Empty. Add your own CSS if you like */
+@font-face {
+    font-family: roboto;
+    src: url(RobotoCondensed-Regular.ttf);
+}
+body{
+	font-family: roboto;
+}
 .bar-header{
 	background: rgb(218, 132, 2) !important;
 }
@@ -42,4 +49,33 @@ ion-tabs.tabs-striped.tabs-color-active-positive .tab-item.tab-item-active, ion-
 }
 .item{
 	font-size: 12px !important;
+}
+//Scale-In Animation
+.scale-in {
+  -webkit-transform: scale(0.9);
+  transform: scale(0.9);
+  opacity: 0;
+}
+.scale-in.ng-enter,
+.scale-in > .ng-enter {
+	-webkit-transition: all cubic-bezier(.1, .7, .1, 1) 400ms;
+  transition: all cubic-bezier(.1, .7, .1, 1) 400ms;
+}
+
+.scale-in.ng-enter-active,
+.scale-in > .ng-enter-active {
+	-webkit-transform: scale(1);
+  transform: scale(1);
+  opacity: 1;
+}
+
+.scale-in.ng-leave,
+.scale-in > .ng-leave {
+	-webkit-transition: all ease-in-out 250ms;
+  transition: all ease-in-out 250ms;
+}
+.button .icon {
+    vertical-align: top;
+    pointer-events: none;
+    color: white;
 }

@@ -4,6 +4,50 @@
       <div class="item item-text-wrap text-center row">
         <div class="col">
           <ion-list>
+            <a class="button button-block button-small button-balanced button-full"
+            ng-click="currentSavings()">
+            <i class="icon ion-medkit"></i> 
+            CURRENT SAVINGS</a>
+            <a class="button button-block button-small button-balanced button-full"
+            ng-click="withdrawSavings()">
+            <i class="icon ion-medkit"></i> 
+            WITHDRAW SAVINGS</a>
+            <a class="button button-block button-small button-balanced button-full"
+            ng-click="howToSave()">
+            <i class="icon ion-medkit"></i> 
+            HOW TO SAVE</a>
+            <a class="button button-block button-small button-balanced button-full"
+            ng-click="beneficiary()">
+            <i class="icon ion-medkit"></i> 
+            BENEFICIARIES</a>
+          </ion-list>          
+          
+          
+        </div>   
+      </div>
+      
+      <div class="item item-text-wrap text-center row">
+            <div class="col kidogo">
+              Contact us on <br>
+              <a class="button button-balanced button-small footer" href="#" onclick="window.open('mailto:info@inukapap.co.ke', '_system')">
+                <ion-icon class="ion-ios-email"></ion-icon>
+              </a>
+              <a class="button button-balanced button-small footer"  href="#" onclick="window.open('https://www.facebook.com/inukapap', '_system')">
+                <ion-icon class="ion-social-facebook"></ion-icon>
+              </a>
+              <a class="button button-balanced button-small footer" href="tel:+254701949994">                
+                <ion-icon class="ion-android-call"></ion-icon>
+              </a>
+            </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
+
+<script id="savings-modal.html" type="text/ng-template" class="scale-in">
+      
+        <div class="card"> 
+          <ion-list>
             <ion-item>
               Current Savings
             </ion-item>
@@ -25,12 +69,15 @@
               <span class="site-color">KSH</span>              
             </ion-item>
           </ion-list>
+        </div>
+</script>
+<script id="withdrawal-modal.html" type="text/ng-template" class="scale-in">
+  
+        <div class="card">
           <ion-list>
             <div class="item item-divider site-color text-center">
                 Withdraw Savings
             </div>
-            <div class="item item-text-wrap text-center row">         
-                <div class="col">
                   <ion-list>
                     <div class="list">            
                     <label class="item item-input">
@@ -38,8 +85,6 @@
                     </label>
                     </div>
                   </ion-list>
-              </div>
-              <div class="col">
                   <ion-list>
                     <div class="list">
                     <label class="item item-input">
@@ -47,8 +92,6 @@
                     </label>
                       </div>
                   </ion-list>
-              </div>
-              <div class="col">
                   <ion-list>
                     <div class="list">
                     <label class="item item-input">
@@ -58,10 +101,38 @@
                   </label>            
                   </div>
                   </ion-list>
-                </div>          
-              </div>
           </ion-list>
+        </div>
+</script>
+
+<script id="how-to-save.html" type="text/ng-template" class="scale-in">
+  
+        <div class="card">
           <ion-list>
+            <div class="item item-divider site-color text-center">
+                How To Save
+            </div>
+                  <ion-list>
+                    <div class="list">            
+                      <div class="item item-divider text-center row">
+                          Saving Gives You Access To Medical Cover
+                      </div>
+                        
+                      <div class="item item-text-wrap text-center row">
+                        <div class="col kidogo">
+                          You can save more through Pay Bill Number 263520, account no is your phone number {{phone}}. <br> 
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </ion-list>
+          </ion-list>
+        </div>
+</script>
+<script id="beneficiaries.html" type="text/ng-template" class="scale-in">
+  
+        <div class="card">
+          <ion-list>            
             <div class="card">
               <label class="item item-input site-color">
                 <div class="col">Beneficiaries  </div>  
@@ -70,37 +141,8 @@
                 <span class="input-label"><img ng-src="http://app.inukapap.co.ke/uploads/insurance/{{ user_id }}/{{b.photo}}" width="100px"></span>
                 <span class="input-label"><p>{{b.names}}<br>{{b.relation}}<br>{{b.email}}<br>IDNO: {{b.idno}}</p></span>
               </label>
-              <label class="item item-input" ng-if="nobeneficiaries">
-                <p>You can send information on your beneficiaries to info@inukapap.co.ke: names, id no, phone and date of birth, passport Photo and Birth certificate</p>
-              </label>
+                <div class="col kidogo">You can send information on your beneficiaries to info@inukapap.co.ke: names, id no, phone and date of birth, passport Photo and Birth certificate</div>
             </div>
           </ion-list>
-        </div>   
-      </div>
-      <div class="item item-divider text-center row">
-          Saving Gives You Access To Medical Cover
-      </div>
-        
-      <div class="item item-text-wrap text-center row">
-        <div class="col kidogo">
-          You can save more through Pay Bill Number 263520, account no is your phone number {{phone}}. <br> 
         </div>
-        
-      </div>
-      <div class="item item-text-wrap text-center row">
-            <div class="col kidogo">
-              Contact us on <br>
-              <a class="button button-balanced button-small footer" href="#" onclick="window.open('mailto:info@inukapap.co.ke', '_system')">
-                <ion-icon class="ion-ios-email"></ion-icon>
-              </a>
-              <a class="button button-balanced button-small footer"  href="#" onclick="window.open('https://www.facebook.com/inukapap', '_system')">
-                <ion-icon class="ion-social-facebook"></ion-icon>
-              </a>
-              <a class="button button-balanced button-small footer" href="tel:+254701949994">                
-                <ion-icon class="ion-android-call"></ion-icon>
-              </a>
-            </div>
-      </div>
-    </div>
-  </ion-content>
-</ion-view>
+</script>

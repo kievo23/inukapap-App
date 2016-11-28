@@ -1,98 +1,25 @@
 <ion-view view-title="Loans">
-  <ion-content class="padding">
+  <ion-content>
   	<div class="card">
-  		<div class="item item-divider site-color text-center">
-		    Loan Status
-		  </div>
-		<div class="item item-text-wrap text-center row">    	    
-	    	<div class="col">
-	    		<ion-list>
-			    	<div class="list">					  
-					  <label class="item item-input">
-					    <span class="input-label kidogo">Enter Pin</span>
-					  </label>
-					  </div>
-			    </ion-list>
-			</div>
-			<div class="col">
-	    		<ion-list>
-			    	<div class="list">
-					  <label class="item item-input item-floating-label">
-					    <input type="password" ng-model="user.pin" placeholder="***">
-					  </label>
-					    </div>
-			    </ion-list>
-			</div>
-			<div class="col">
-	    		<ion-list>
-			    	<div class="list">
-					  <label class="item item-input">
-					  	<button class="button button-energized" ng-click="auth(user)">
-						  Check
-						</button>
-					</label>					  
-					</div>
-			    </ion-list>
-	    	</div>	    		
-	    </div>
-	    <div class="item item-text-wrap text-center row">	    	
-	    	<div class="col">
-	    		<ion-list>
-	    			<ion-item>
-			    		Current Loan:<br>
-			    		<span class="loan-color">{{ balance }}</span>
-			    	</ion-item>
-			    	<ion-item>
-			    		Loan Limit:<br>
-			    		<span class="site-color">{{ loan_limit }}</span>
-			    	</ion-item>
-			    	<ion-item>
-			    	</ion-item>
-			    </ion-list>	    		
-	    	</div>	    		
-	    </div>
+  		<div class="item item-text-wrap text-center row">
+        	<div class="col">
+		  		<ion-list>
+		            <a class="button button-block button-small button-balanced button-full"
+		            ng-click="loanStatus()">
+		            <i class="icon ion-cash"></i> 
+		            LOAN STATUS</a>
+		            <a class="button button-block button-small button-balanced button-full"
+		            ng-click="takeLoan()">
+		            <i class="icon ion-cash"></i> 
+		            TAKE LOAN</a>
+		            <a class="button button-block button-small button-balanced button-full"
+		            ng-click="payLoan()">
+		            <i class="icon ion-cash"></i> 
+		            PAY LOAN</a>		            
+		          </ion-list>  
+		        </div>
+		    </div>
 	    
-	    <div class="item item-divider site-color text-center">
-		    Request Loan
-		</div>
-		<div class="item item-text-wrap text-center row">    	    
-	    	<div class="col">
-	    		<ion-list>
-			    	<div class="list">					  
-					  <label class="item item-input item-floating-label">
-					    <span class="input-label">Amount</span>
-					    <input type="text" ng-model="loan.amount" placeholder="2000">
-					  </label>
-					  </div>
-			    </ion-list>
-			</div>
-			<div class="col">
-	    		<ion-list>
-			    	<div class="list">
-					  <label class="item item-input item-floating-label">
-					    <span class="input-label kidogo">Enter Pin</span>
-					    <input type="password" ng-model="loan.pin" placeholder="****">
-					  </label>
-					    </div>
-			    </ion-list>
-			</div>
-			<div class="col">
-	    		<ion-list>
-			    	<div class="list">
-					  <label class="item item-input item-floating-label">
-					  	<button class="button button-energized" ng-click="loanRequest(loan)">
-						  Request
-						</button>
-					</label>					  
-					</div>
-			    </ion-list>
-	    	</div>	    		
-	    </div>
-	    <div class="item item-text-wrap text-center row">
-        	<div class="col kidogo">
-          		You can pay your loan through Pay Bill Number 263520, account no is your phone number {{phone}}. <br> 
-        	</div>
-      	</div>
       	<div class="item item-text-wrap text-center row">
             <div class="col kidogo">
               Contact us on <br>
@@ -110,3 +37,90 @@
     </div>    
   </ion-content>
 </ion-view>
+
+<script id="loanStatus.html" type="text/ng-template" class="scale-in  text-center">  
+        <div class="card">
+          <div class="item item-divider site-color text-center">
+		    Loan Status
+		  </div>
+			<div class="item item-text-wrap text-center"> 
+				    	<div class="list">					  
+						  <label class="item item-input">
+						    <span class="input-label kidogo">Enter Pin</span>
+						  </label>
+						  </div>
+				    	<div class="list">
+						  <label class="item item-input item-floating-label">
+						    <input type="password" ng-model="user.pin" placeholder="***">
+						  </label>
+						    </div>
+				    	<div class="list">
+						  	<label class="item item-input">
+							  	<button class="button button-energized" ng-click="auth(user)">
+								  Check
+								</button>
+							</label>					  
+						</div>
+				    </ion-list>	
+		    </div>
+		    <div class="item item-text-wrap text-center row">	    	
+	    	<div class="col">
+	    		<ion-list>
+	    			<ion-item>
+			    		Current Loan:<br>
+			    		<span class="loan-color">{{ balance }}</span>
+			    	</ion-item>
+			    	<ion-item>
+			    		Loan Limit:<br>
+			    		<span class="site-color">{{ loan_limit }}</span>
+			    	</ion-item>
+			    	<ion-item>
+			    	</ion-item>
+			    </ion-list>	    		
+	    	</div>	    		
+	    </div>
+        </div>
+</script>
+
+<script id="takeLoan.html" type="text/ng-template" class="scale-in text-center">  
+        <div class="card">
+          <div class="item item-divider site-color text-center">
+		    Request Loan
+		</div>
+	    		<ion-list>
+			    	<div class="list">					  
+					  <label class="item item-input item-floating-label">
+					    <span class="input-label">Amount</span>
+					    <input type="text" ng-model="loan.amount" placeholder="2000">
+					  </label>
+					  </div>
+			    </ion-list>
+	    		<ion-list>
+			    	<div class="list">
+					  <label class="item item-input item-floating-label">
+					    <span class="input-label kidogo">Enter Pin</span>
+					    <input type="password" ng-model="loan.pin" placeholder="****">
+					  </label>
+					    </div>
+			    </ion-list>
+	    		<ion-list>
+			    	<div class="list">
+					  <label class="item item-input item-floating-label">
+					  	<button class="button button-energized" ng-click="loanRequest(loan)">
+						  Request
+						</button>
+					</label>					  
+					</div>
+			    </ion-list>
+        </div>
+</script>
+
+<script id="payLoan.html" type="text/ng-template" class="scale-in">  
+        <div class="card">
+          <div class="item item-text-wrap text-center row">
+        	<div class="col kidogo">
+          		You can pay your loan through Pay Bill Number 263520, account no is your phone number {{phone}}. <br> 
+        	</div>
+      	</div>
+        </div>
+</script>
