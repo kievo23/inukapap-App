@@ -6,19 +6,19 @@
           <ion-list>
             <a class="button button-block button-small button-balanced button-full"
             ng-click="currentSavings()">
-            <i class="icon ion-medkit"></i> 
+            <i class="icon ion-clipboard"></i> 
             CURRENT SAVINGS</a>
             <a class="button button-block button-small button-balanced button-full"
             ng-click="withdrawSavings()">
-            <i class="icon ion-medkit"></i> 
+            <i class="icon ion-archive"></i> 
             WITHDRAW SAVINGS</a>
             <a class="button button-block button-small button-balanced button-full"
             ng-click="howToSave()">
-            <i class="icon ion-medkit"></i> 
+            <i class="icon ion-flag"></i> 
             HOW TO SAVE</a>
             <a class="button button-block button-small button-balanced button-full"
             ng-click="beneficiary()">
-            <i class="icon ion-medkit"></i> 
+            <i class="icon ion-person-stalker"></i> 
             BENEFICIARIES</a>
           </ion-list>          
           
@@ -65,8 +65,9 @@
           </ion-list>
           <ion-list>
             <ion-item>
-              <span class="site-color">{{balance}}</span><br>
-              <span class="site-color">KSH</span>              
+              <span class="site-color">Savings Ksh: {{balance}}</span><br>
+              <span class="site-color">Shamba: {{shamba}}</span> <br>     
+              <span class="site-color">Hire Purchase: {{hp}}</span> <br>        
             </ion-item>
           </ion-list>
         </div>

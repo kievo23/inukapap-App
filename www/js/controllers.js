@@ -133,7 +133,7 @@ angular.module('starter.controllers', [])
       $scope.show($ionicLoading);
       $http({
         method: 'POST',
-        url : 'http://app.inukapap.co.ke/api/authPinApp',      
+        url : 'http://localhost:8000/api/authPinApp',      
         data: {'pin':user.pin, 'phone':phone, 'savings':true},
         headers : {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
       }).then(function(response){
@@ -141,8 +141,9 @@ angular.module('starter.controllers', [])
           if(response.data.error){
             $scope.showAlert(response.data.error);
           }else{
-            var balance = parseInt(response.data.deposit);
-            $scope.balance = Math.abs(balance);
+            $scope.balance = Math.abs(parseInt(response.data.deposit.deposits.deposit));
+            $scope.shamba = Math.abs(parseInt(response.data.deposit.shamba.deposit));
+            $scope.hp = Math.abs(parseInt(response.data.deposit.hp.deposit));
           }
 
         },
