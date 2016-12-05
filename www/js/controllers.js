@@ -1,12 +1,61 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope,$state) {
+.controller('DashCtrl', function($scope,$ionicLoading,$http,$state,$ionicPopup) {
     $scope.phone = window.localStorage.getItem('phone');
     $scope.first_name = window.localStorage.getItem('first_name');
     $scope.last_name = window.localStorage.getItem('last_name');
+    $scope.show = function() {$ionicLoading.show({template: '<p>Loading...</p><ion-spinner></ion-spinner>'});};
+    $scope.hide = function(){$ionicLoading.hide();};
+    $scope.item = {};
     if($scope.phone == null){
       $state.go('loginPage');
     }
+
+     $scope.showAlert = function($message) {
+      var alertPopup = $ionicPopup.alert({
+        title: 'iNuka Pap',
+        template: $message
+      });
+      alertPopup.then(function(res) {
+        //console.log('Thank you for not eating my delicious ice cream cone');
+      });
+    };
+
+    $scope.hirepurchase = function() {
+    $scope.data = {};
+
+    // An elaborate, custom popup
+    var myPopup = $ionicPopup.show({
+      templateUrl: 'hirepurchase.html',
+      title: 'Hire Purchase',
+      scope: $scope,
+      buttons: [
+        { text: 'Close' }
+      ]
+    });
+
+    myPopup.then(function(res) {
+      console.log('Tapped!', res);
+    });
+  };
+
+  $scope.request = function(item){
+    $scope.show($ionicLoading);
+    //$scope.hide($ionicLoading);
+    //console.log(item);
+    $http({
+        method: 'POST',
+        url : 'http://localhost:8000/api/hirePurchaseRequest',      
+        data: {'item_value':item.amount, 'payment_plan':item.paymentplan, 'till_number':item.till, 'phone':$scope.phone},
+        headers : {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+    }).then(function (response){
+      $scope.hide($ionicLoading);
+      console.log(response.data);
+    },function(response){
+      $scope.hide($ionicLoading);
+      $scope.showAlert("Network problem, Try Again");
+    });
+  }
 })
 
 .controller('LoginPage', function($scope,$state) {
@@ -37,9 +86,6 @@ angular.module('starter.controllers', [])
       console.log('Tapped!', res);
     });
 
-    $timeout(function() {
-       myPopup.close(); //close the popup after 3 seconds for some reason
-    }, 10000);
   };
 
   $scope.withdrawSavings = function() {
@@ -59,9 +105,6 @@ angular.module('starter.controllers', [])
       console.log('Tapped!', res);
     });
 
-    $timeout(function() {
-       myPopup.close(); //close the popup after 3 seconds for some reason
-    }, 10000);
   };
 
   $scope.howToSave = function() {
@@ -81,9 +124,6 @@ angular.module('starter.controllers', [])
       console.log('Tapped!', res);
     });
 
-    $timeout(function() {
-       myPopup.close(); //close the popup after 3 seconds for some reason
-    }, 10000);
   };
 
   $scope.beneficiary = function() {
@@ -103,9 +143,6 @@ angular.module('starter.controllers', [])
       console.log('Tapped!', res);
     });
 
-    $timeout(function() {
-       myPopup.close(); //close the popup after 3 seconds for some reason
-    }, 10000);
   };
 
   $scope.showAlert = function($message) {
@@ -133,7 +170,7 @@ angular.module('starter.controllers', [])
       $scope.show($ionicLoading);
       $http({
         method: 'POST',
-        url : 'http://localhost:8000/api/authPinApp',      
+        url : 'http://app.inukapap.co.ke/api/authPinApp',      
         data: {'pin':user.pin, 'phone':phone, 'savings':true},
         headers : {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
       }).then(function(response){
@@ -346,9 +383,6 @@ angular.module('starter.controllers', [])
       console.log('Tapped!', res);
     });
 
-    $timeout(function() {
-       myPopup.close(); //close the popup after 3 seconds for some reason
-    }, 10000);
   };
 
   $scope.takeLoan = function() {
@@ -368,9 +402,6 @@ angular.module('starter.controllers', [])
       console.log('Tapped!', res);
     });
 
-    $timeout(function() {
-       myPopup.close(); //close the popup after 3 seconds for some reason
-    }, 10000);
   };
 
   $scope.payLoan = function() {
@@ -390,9 +421,6 @@ angular.module('starter.controllers', [])
       console.log('Tapped!', res);
     });
 
-    $timeout(function() {
-       myPopup.close(); //close the popup after 3 seconds for some reason
-    }, 10000);
   };
 
   $scope.facebook = function(){
@@ -535,7 +563,7 @@ angular.module('starter.controllers', [])
         $http({
           method: 'POST',
           url : 'http://app.inukapap.co.ke/api/authRegApp',      
-          data: {'idno':user.idno, 'phone':user.phone,'confirmation_code':user.code},
+          data: {'idno':user.idno, 'phone':user.phone,'pin':user.code},
           headers : {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
         }).then(function(response){
             $scope.hide($ionicLoading);

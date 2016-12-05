@@ -21,6 +21,11 @@
         <i class="icon ion-bag"></i> 
         SAVINGS</a>
       </ion-list>
+      <ion-list>
+        <a class="button button-block button-small button-balanced button-full" ng-click="hirepurchase()">
+        <i class="icon ion-ios-cart-outline"></i> 
+        HIRE PURCHASE</a>
+      </ion-list>
     </div>
     <div class="item item-text-wrap text-center row">
             <div class="col kidogo">
@@ -41,5 +46,51 @@
     
   </ion-content>
 </ion-view>
+
+
+<script id="hirepurchase.html" type="text/ng-template" class="scale-in text-center">  
+        <div class="card">
+          <div class="item item-divider site-color text-center">
+        Hire Purchase
+    </div>
+          <ion-list>
+            <div class="list">            
+            <label class="item item-input">
+              <span class="input-label">Item Value</span>
+              <input type="number" ng-model="item.amount" placeholder="2000">
+            </label>
+            </div>
+          </ion-list>
+          <ion-list>
+            <div class="list">
+            <label class="item item-input">
+              <span class="input-label kidogo">Payment Plan</span>
+              <select ng-model="item.paymentplan">
+                <option class="selected">1</option>
+                <option>3</option>
+                <option>6</option>
+              </select>
+            </label>
+              </div>
+          </ion-list>
+          <ion-list>
+            <div class="list">            
+            <label class="item item-input">
+              <span class="input-label">Till Number</span>
+              <input type="number" ng-model="item.till" placeholder="">
+            </label>
+            </div>
+          </ion-list>
+          <ion-list>
+            <div class="list">
+            <label class="item item-input item-floating-label">
+              <button class="button button-energized" ng-click="request(item)">
+              Request
+            </button>
+          </label>            
+          </div>
+          </ion-list>
+        </div>
+</script>
 
 
