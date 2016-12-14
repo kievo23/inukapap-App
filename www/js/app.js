@@ -83,12 +83,6 @@ angular.module('starter', ['ionic','starter.controllers','starter.services','ngC
     controller: 'LoginPage'
   })
 
-  .state('register', {
-    url: '/register',
-    templateUrl: 'templates/tab-register.html',
-    controller: 'RegisterCtrl'
-  })
-
   .state('tab.savings', {
       url: '/savings',
       views: {
